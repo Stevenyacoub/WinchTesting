@@ -1,5 +1,6 @@
 #ifndef Winch_H
 #define Winch_H
+#include "CANTalon.h"
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"

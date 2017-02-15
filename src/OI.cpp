@@ -1,6 +1,11 @@
 #include "OI.h"
 
 OI::OI()
+	: joystick(new Joystick(0))
 {
-	// Process operator interface input here.
+}
+
+Joystick* OI::getJoystick()
+{
+	return joystick;
 }

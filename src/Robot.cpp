@@ -73,6 +73,9 @@ private:
 
 	void TeleopPeriodic()
 	{
+		SmartDashboard::PutNumber("CANTalon 0 Voltage", CommandBase::motor->getVoltage());
+		SmartDashboard::PutNumber("CANTalon 0 Current", CommandBase::motor->getCurrent());
+		SmartDashboard::PutNumber("CANTalon 0 Speed", CommandBase::motor->getSpeed());
 		Scheduler::GetInstance()->Run();
 	}
 

@@ -4,10 +4,13 @@ WinchSpeedPID::WinchSpeedPID() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(Winch);
-	 _lastButton1 = false;
+	 // TODO:: Find joystick port
+	 Joystick* winchMove = new Joystick(5);
 	 _talon->SetControlMode(CANSpeedController::kPercentVbus);
-	 _talon->ConfigLimitMode(CANSpeedController::kLimitMode_SrxDisableSwitchInputs);
+	 _talon->SetFeedbackDevice(CANTalon::CtreMagEncoder_Relative);
+	 // _talon->ConfigLimitMode(CANSpeedController::kLimitMode_SrxDisableSwitchInputs);
 	 correctionValue = 0.5;
+
 }
 
 // Called just before this Command runs the first time

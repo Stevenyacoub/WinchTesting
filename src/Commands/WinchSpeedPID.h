@@ -8,6 +8,7 @@ using namespace frc;
 class WinchSpeedPID : public CommandBase {
 
 private:
+	Joystick* winchMove;
 	CANTalon* _talon;
 	bool _lastButton1;
 	double targetPositionRotations;

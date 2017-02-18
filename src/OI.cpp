@@ -1,11 +1,21 @@
 #include "OI.h"
+#include "Commands/dummy.h"
+//NOTE: That will be the command that autonomous will create
 
 OI::OI()
-	: joystick(new Joystick(0))
+	: operatorStick(new Joystick(0))
 {
+	new JoystickButton(operatorStick, 1);
+	Button* positionControl = new JoystickButton(operatorStick, 1);
+	positionControl->WhenPressed(new dummy());
 }
 
-Joystick* OI::getJoystick()
+Joystick* OI::getOperatorStick()
 {
-	return joystick;
+	return operatorStick;
+}
+
+OI::~OI()
+{
+	delete operatorStick;
 }

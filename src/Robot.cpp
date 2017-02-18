@@ -1,8 +1,8 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
-#include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
-
+#include "SingleMotor.h"
+using namespace frc;
 class Robot: public IterativeRobot
 {
 private:
@@ -73,9 +73,10 @@ private:
 
 	void TeleopPeriodic()
 	{
-		SmartDashboard::PutNumber("CANTalon 0 Voltage", CommandBase::motor->getVoltage());
-		SmartDashboard::PutNumber("CANTalon 0 Current", CommandBase::motor->getCurrent());
-		SmartDashboard::PutNumber("CANTalon 0 Speed", CommandBase::motor->getSpeed());
+		std::string << "CANTalon " + (idvar) + " Current";
+		SmartDashboard::PutNumber("CANTalon (ID) Voltage", CommandBase::motor->getVoltage());
+		std::string::SmartDashboard::PutNumber("CANTalon " + (idvar) + " Current", CommandBase::motor->getCurrent());
+		SmartDashboard::PutNumber("CANTalon (ID) Speed", CommandBase::motor->getSpeed());
 		Scheduler::GetInstance()->Run();
 	}
 

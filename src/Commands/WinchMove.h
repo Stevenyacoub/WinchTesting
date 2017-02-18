@@ -1,25 +1,22 @@
-#ifndef WinchSpeedPID_H
-#define WinchSpeedPID_H
+#ifndef WinchMove_H
+#define WinchMove_H
 
 #include "../CommandBase.h"
 #include "../Subsystems/Winch.h"
+#include "OI.h"
 using namespace frc;
 
-class WinchSpeedPID : public CommandBase {
+class WinchMove : public CommandBase {
 
 private:
 	Joystick* winchMove;
 	CANTalon* _talon;
 	bool _lastButton1;
-	double targetPositionRotations;
-	double currentPoint;
 	double setPoint;
-	double correctionValue;
-	double moveValue;
-	double distFromSetPoint;
+
 
 public:
-	WinchSpeedPID();
+	WinchMove();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

@@ -19,3 +19,8 @@ OI::~OI()
 {
 	delete operatorStick;
 }
+
+Button* OI::activatePositionControl()
+{
+	return positionControl;
+}

@@ -10,6 +10,7 @@ private:
 	Button* positionControl;
 public:
 	OI();
+	~OI();
 	Joystick* getOperatorStick();
 	Button* activatePositionControl();
 };

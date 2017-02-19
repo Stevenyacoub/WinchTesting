@@ -1,9 +1,10 @@
 #include <Commands/WinchMove.h>
 
-WinchMove::WinchMove() {
+WinchMove::WinchMove()
+{
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(Winch);
+	Requires(winch);
 	 // TODO:: Find joystick port
 	 Joystick* winchMove = new Joystick(5);
 	 _talon->SetControlMode(CANSpeedController::kPercentVbus);
@@ -29,7 +30,7 @@ void WinchMove::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool WinchMove::IsFinished()
 {
-	if(oi-> == true)
+	if(_lastButton1 == true)
 	{
 		return true;
 	}

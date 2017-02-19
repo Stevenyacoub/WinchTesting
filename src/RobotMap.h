@@ -21,9 +21,9 @@
 //const int RANGE_FINDER_MODULE = 1;
 const int WINCH_ENCODER1 = 40;
 const int WINCH_ENCODER2 = 41;
-const int WINCH_MOTOR = 43;
-const int WINCH_PDP_PORT = 0;
-const int WINCH_CAN_ID = 0;
-const int MOTORPORT = 0;
+//const int WINCH_MOTOR = 43;
+const int WINCH_PDP_PORT = 15;
+const int WINCH_CAN_ID = 1;
+const int MOTORPORT = 15;
 
 #endif

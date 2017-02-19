@@ -1,21 +1,23 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
+#include "Commands/PositionControl.h"
+#include "Subsystems/Winch.h"
 #include "CommandBase.h"
-#include "SingleMotor.h"
+#include "Subsystems/SingleMotor.h"
 using namespace frc;
 class Robot: public IterativeRobot
 {
 private:
 	std::unique_ptr<Command> autonomousCommand;
-	SendableChooser *chooser;
+	//SendableChooser *chooser;
 
 	void RobotInit()
 	{
 		CommandBase::init();
-		chooser = new SendableChooser();
-		chooser->AddDefault("Default Auto", new ExampleCommand());
+		//chooser = new SendableChooser();
+		//chooser->AddDefault("Default Auto");
 		//chooser->AddObject("My Auto", new MyAutoCommand());
-		SmartDashboard::PutData("Auto Modes", chooser);
+		//SmartDashboard::PutData("Auto Modes", &chooser);
 	}
 
 	/**
@@ -50,7 +52,7 @@ private:
 			autonomousCommand.reset(new ExampleCommand());
 		} */
 
-		autonomousCommand.reset((Command *)chooser->GetSelected());
+		//autonomousCommand.reset((Command *)chooser->GetSelected());
 
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
@@ -73,11 +75,8 @@ private:
 
 	void TeleopPeriodic()
 	{
-		std::string << "CANTalon " + (idvar) + " Current";
-		SmartDashboard::PutNumber("CANTalon (ID) Voltage", CommandBase::motor->getVoltage());
-		std::string::SmartDashboard::PutNumber("CANTalon " + (idvar) + " Current", CommandBase::motor->getCurrent());
-		SmartDashboard::PutNumber("CANTalon (ID) Speed", CommandBase::motor->getSpeed());
-		Scheduler::GetInstance()->Run();
+		frc::Scheduler::GetInstance()->Run();
+		frc::SmartDashboard::PutNumber("CANTalon (ID) Current", CommandBase::winch->getCurrent());
 	}
 
 	void TestPeriodic()

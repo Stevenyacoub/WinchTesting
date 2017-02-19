@@ -2,12 +2,12 @@
 
 MoveMotor::MoveMotor()
 {
-	Requires(motor);
+//	Requires(motor);
 }
 
 void MoveMotor::Execute()
 {
-	motor->setSpeed(oi->getJoystick()->GetY());
+	//motor->setSpeed(oi->getJoystick()->GetY());
 }
 
 bool MoveMotor::IsFinished()

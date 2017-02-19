@@ -19,7 +19,7 @@ public:
 	CommandBase();
 	static void init();
 	// Create a single static instance of all of your subsystems
-	static std::unique_ptr<Winch> winch;
+	static Winch* winch;
 	static std::unique_ptr<OI> oi;
 };
 

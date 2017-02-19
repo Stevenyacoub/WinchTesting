@@ -3,8 +3,8 @@
 #include "WPILib.h"
 
 
-Winch::Winch(int portNumber, uint32_t canID) :
-	Subsystem("Winch"),talonMotor(new TalonSRX(WINCH_MOTOR)),
+Winch::Winch(int portNumber, uint32_t canID):
+	Subsystem("Winch"),talonMotor(new TalonSRX(canID)),
 	distEncoder(new Encoder(WINCH_ENCODER1 ,WINCH_ENCODER2)),
 	winchPortNumber(portNumber),
 	canBUSID(canID)

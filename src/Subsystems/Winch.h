@@ -8,8 +8,8 @@
 class Winch: public Subsystem
 {
 private:
-	TalonSRX* talonMotor;
-	Encoder* distEncoder;
+	CANTalon* talonMotor;
+	//Encoder* distEncoder;
 	PowerDistributionPanel pdp;
 	int winchPortNumber;
 	uint32_t canBUSID;
@@ -17,6 +17,7 @@ private:
 public:
 	Winch(int portNumber,uint32_t canID);
 	~Winch();
+	CANTalon * getTalon();
 	double getDistance();
 	double getRate();
 	double getCurrent();

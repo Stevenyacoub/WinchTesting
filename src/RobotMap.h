@@ -24,6 +24,6 @@ const int WINCH_ENCODER2 = 41;
 //const int WINCH_MOTOR = 43;
 const int WINCH_PDP_PORT = 15;
 const int WINCH_CAN_ID = 1;
-const int MOTORPORT = 15;
+const int MOTORPORT = 1;
 
 #endif

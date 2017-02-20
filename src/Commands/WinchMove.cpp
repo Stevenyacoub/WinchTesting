@@ -1,4 +1,5 @@
 #include <Commands/WinchMove.h>
+#include <RobotMap.h>
 
 WinchMove::WinchMove()
 {
@@ -6,9 +7,12 @@ WinchMove::WinchMove()
 	// eg. Requires(Robot::chassis.get());
 	Requires(winch);
 	 // TODO:: Find joystick port
-	 Joystick* winchMove = new Joystick(5);
-	 _talon->SetControlMode(CANSpeedController::kPercentVbus);
-	 _talon->SetFeedbackDevice(CANTalon::CtreMagEncoder_Relative);
+	 winchMove = oi->getOperatorStick();
+	 _talon = new CANTalon(WINCH_CAN_ID);
+	 _lastButton1 = false;
+	 setPoint = 0;
+	 //_talon->SetControlMode(CANSpeedController::kPercentVbus);
+	 //_talon->SetFeedbackDevice(CANTalon::CtreMagEncoder_Relative);
 	 // _talon->ConfigLimitMode(CANSpeedController::kLimitMode_SrxDisableSwitchInputs);
 
 
@@ -23,7 +27,7 @@ void WinchMove::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void WinchMove::Execute()
 {
-	setPoint = (oi->getOperatorStick()->GetY());
+	setPoint = (winchMove->GetY());
 	_talon->Set(setPoint);
 }
 

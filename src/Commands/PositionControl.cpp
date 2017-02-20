@@ -4,14 +4,18 @@
 PositionControl::PositionControl() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
+	Requires(winch);
 }
 
 // Called just before this Command runs the first time
 void PositionControl::Initialize() {
+	winch->getTalon()->Set(0.5);
+	RobotSetClosedPositionLoop(winch->getTalon(),0);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void PositionControl::Execute() {
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -30,8 +34,7 @@ void PositionControl::Interrupted() {
 
 void PositionControl::RobotInit()
 {
-	talon->Set(0.2);
-	RobotSetClosedPositionLoop(talon,0);
+
 }
 
 void PositionControl::RobotPrintPositionControlLoopStatus(CANTalon* _talon)
@@ -124,7 +127,7 @@ void PositionControl::TeleopPeriodic()
 		_talon->Set(leftYstick);
 	}
 #endif
-	RobotPrintPositionControlLoopStatus(talon);
+	RobotPrintPositionControlLoopStatus(winch->getTalon());
 #if 0
 	/* save button state for on press detect */
 	_lastButton1 = button1;

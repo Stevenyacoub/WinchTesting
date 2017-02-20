@@ -15,9 +15,6 @@ using namespace frc;
 class PositionControl : public CommandBase {
 
 private:
-	CANTalon * talon = new CANTalon(1);
-	CANTalon * _talon;
-	int movedown;
 	//Joystick * _joy = new Joystick(0);
 	std::string _sb;
 	int _loops = 0;
